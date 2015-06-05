@@ -1,0 +1,16 @@
+{
+  "name": "mp4-convert",
+  "version": "1.0.0",
+  "description": "Convert any video file into a MP4 file playable on the Web, using ffmpeg",
+  "main": "index.js",
+  "bin" : {
+    "mp4-convert" : "./cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julien Chaumond",
+  "license": "MIT",
+  "dependencies": {
+  }
+}
