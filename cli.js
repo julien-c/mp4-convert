@@ -5,8 +5,8 @@ var Mp4Convert = require('./index');
 
 var argv = process.argv.slice(2);
 
-var input  = __dirname+'/'+argv[0];
-var output = __dirname+'/'+argv[1];
+var input  = argv[0];
+var output = argv[1];
 
 if (!fs.existsSync(input)) {
 	return console.log('Input file not found');
