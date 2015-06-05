@@ -3,9 +3,18 @@
   "version": "1.0.0",
   "description": "Convert any video file into a MP4 file playable on the Web, using ffmpeg",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julien-c/mp4-convert.git"
+  },
   "bin" : {
     "mp4-convert" : "./cli.js"
   },
+  "keywords": [
+    "ffmpeg",
+    "mp4",
+    "video"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
