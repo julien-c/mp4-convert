@@ -7,7 +7,7 @@
 ## How to run the CLI
 
 - `npm install mp4-convert`
-- `.bin/mp4-convert somevideo.mkv output.mp4`
+- `node_modules/.bin/mp4-convert somevideo.mkv output.mp4`
 
 ## How to use programmatically
 
