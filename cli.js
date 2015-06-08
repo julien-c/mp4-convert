@@ -11,13 +11,25 @@ var output = argv[1];
 if (!fs.existsSync(input)) {
 	return console.log('Input file not found');
 }
+if (!output) {
+	return console.log('You must specify an ouput file');
+}
 
 var convert = new Mp4Convert(input, output);
 convert.on('ffprobeCommand', function(cmd) {
 	console.log('Command', cmd);
 });
 convert.on('ffprobeOutput', function(json) {
-	console.log('ffprobe output');
+	console.log('ffprobe output', json);
+});
+convert.on('codecVideo', function(c) {
+	console.log('codec', c);
+});
+convert.on('codecAudio', function(c) {
+	console.log('codec', c);
+});
+convert.on('error', function(err, signal) {
+	console.log('Err', err, signal);
 });
 convert.on('progress', function(p) {
 	console.log('Progress', p);

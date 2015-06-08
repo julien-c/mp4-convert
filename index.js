@@ -10,7 +10,7 @@ util.inherits(Mp4Convert, events.EventEmitter);
 
 
 Mp4Convert.prototype.start = function() {
-	var ffprobe = util.format('ffprobe -hide_banner -print_format json -show_format -show_streams %s', this.input);
+	var ffprobe = util.format('ffprobe -hide_banner -print_format json -show_format -show_streams "%s"', this.input);
 	// When outputting to json, you have to opt in to each piece of info.
 	this.emit('ffprobeCommand', ffprobe);
 	child_process.exec(ffprobe, (function(error, stdout, stderr) {
@@ -27,14 +27,17 @@ Mp4Convert.prototype.start = function() {
 
 Mp4Convert.prototype.ffmpeg = function() {
 	var codecVideo = 'libx264';
+	var codecAudio = 'aac';
 	this.ffprobeJson.streams.forEach(function(stream) {
-		if (stream['codec_type'] === 'video') {
-			if (stream['codec_name'] === 'h264') {
-				codecVideo = 'copy';
-			}
+		if (stream['codec_type'] === 'video' && stream['codec_name'] === 'h264') {
+			codecVideo = 'copy';
+		}
+		if (stream['codec_type'] === 'audio' && stream['codec_name'] === 'aac') {
+			codecAudio = 'copy';
 		}
 	});
 	this.emit('codecVideo', codecVideo);
+	this.emit('codecAudio', codecAudio);
 	
 	this.duration = parseFloat(this.ffprobeJson.format.duration);
 	this.emit('duration', this.duration);
