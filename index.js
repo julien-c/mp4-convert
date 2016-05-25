@@ -13,7 +13,7 @@ Mp4Convert.prototype.start = function() {
 	var ffprobe = util.format('ffprobe -hide_banner -print_format json -show_format -show_streams "%s"', this.input);
 	// When outputting to json, you have to opt in to each piece of info.
 	this.emit('ffprobeCommand', ffprobe);
-	child_process.exec(ffprobe, (function(error, stdout, stderr) {
+	child_process.exec(ffprobe, {maxBuffer : 2048 * 1024}, (function(error, stdout, stderr) {
 		if (error !== null) {
 			return this.emit('error', error);
 		}
