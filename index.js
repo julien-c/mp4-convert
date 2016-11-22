@@ -50,7 +50,7 @@ Mp4Convert.prototype.ffmpeg = function() {
 		'-c:v',
 		codecVideo,
 		'-c:a',
-		'aac',
+		codecAudio,
 		'-strict',
 		'experimental',
 		'-movflags',
