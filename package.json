@@ -1,6 +1,6 @@
 {
   "name": "mp4-convert",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Convert any video file into a MP4 file playable on the Web, using ffmpeg",
   "main": "index.js",
   "repository": {
